@@ -1,1 +1,25 @@
-<p>blog works!</p>
+<div *ngFor="let post of arrPosts" class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{ post.titulo }}</h5>
+        <p class="card-text">{{ post.texto }}</p>
+        <a href="#" class="btn btn-primary" [routerLink]="['/blog', post.id]">Leer mas</a>
+        <a href="#" class="btn btn-primary" (click)="manejarClickBorrar(post.id)">Borrar</a>
+    </div>
+</div>
+
+<button [routerLink]="['/new']">Nuevo Post</button>
+
+
+
+<select class="custom-select" (change)="manejarFiltroCategoria($event)">
+    <option value="" selected>Selecciona una categoría</option>
+    <option value="todas">Todas</option>
+    <option value="cat1">One</option>
+    <option value="cat2">Two</option>
+    <option value="cat3">Three</option>
+    <option value="cat4">Four</option>
+</select>
+
+<input type="text" (input)="manejarFiltroNombre($event)">
+
+<router-outlet></router-outlet>
