@@ -16,21 +16,8 @@ export class PostsService {
 
   // FUNCIONES DEL SERVICIO
 
-  addPost(pTitulo: string, pTexto: string, pAutor: string, pImagen: string, pFecha: string, pCategoria: string) {
-    for (const post of this.arrPosts) {
-      this.ultimoId = post.id;
-    }
-    const post = new Post(this.ultimoId + 1, pTitulo, pTexto, pAutor, pImagen, pFecha, pCategoria);
-    this.arrPosts.push(post);
-    localStorage.setItem('array de posts', JSON.stringify(this.arrPosts));
-  }
-
   getAllPosts(): Post[] {
-    if (JSON.parse(localStorage.getItem('array de posts')) === null) {
-      return this.arrPosts = new Array();
-    } else {
-      return this.arrPosts = JSON.parse(localStorage.getItem('array de posts'));
-    }
+    return this.arrPosts = JSON.parse(localStorage.getItem('array de posts'));
   }
 
   getPostsByCategoria(pCategoria: string): Post[] {
@@ -51,6 +38,15 @@ export class PostsService {
     return this.arrPosts.find(post => {
       return post.id === pId;
     });
+  }
+
+  addPost(pTitulo: string, pTexto: string, pAutor: string, pImagen: string, pFecha: string, pCategoria: string) {
+    for (const post of this.arrPosts) {
+      this.ultimoId = post.id;
+    }
+    const post = new Post(this.ultimoId + 1, pTitulo, pTexto, pAutor, pImagen, pFecha, pCategoria);
+    this.arrPosts.push(post);
+    localStorage.setItem('array de posts', JSON.stringify(this.arrPosts));
   }
 
   deletePost(pId: number) {

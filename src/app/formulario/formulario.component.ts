@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../posts.service';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario',
@@ -9,13 +10,43 @@ import { Router } from '@angular/router';
 })
 export class FormularioComponent implements OnInit {
 
-  constructor(private postsService: PostsService, private router: Router) { }
+  formulario: FormGroup;
+  postCreado: boolean;
+
+  constructor(private postsService: PostsService, private router: Router) {
+
+    this.postCreado = false;
+
+    this.formulario = new FormGroup({
+      titulo: new FormControl('', [
+        Validators.required
+      ]),
+      texto: new FormControl('', [
+        Validators.required
+      ]),
+      autor: new FormControl('', [
+        Validators.required
+      ]),
+      imagen: new FormControl('', [
+        Validators.required
+      ]),
+      fecha: new FormControl('', [
+        Validators.required
+      ]),
+      categoria: new FormControl('', [
+        Validators.required
+      ]),
+    });
+  }
 
   ngOnInit() {
   }
 
-  onSubmit(pFormValues) {
-    this.postsService.addPost(pFormValues.texto1, pFormValues.texto2, pFormValues.texto3, pFormValues.texto4, pFormValues.texto5, pFormValues.texto6);
-    this.router.navigate(['blog']);
+  onSubmit() {
+    this.postsService.addPost(this.formulario.value.titulo, this.formulario.value.texto, this.formulario.value.autor, this.formulario.value.imagen, this.formulario.value.fecha, this.formulario.value.categoria);
+    this.postCreado = true;
+    setTimeout(timeout => {
+      this.router.navigate(['blog']);
+    }, 5000);
   }
 }

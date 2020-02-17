@@ -1,1 +1,118 @@
-<p>formulario works!</p>
+<div class="container">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label>Título</label>
+            <div class="row">
+                <div class="col-11">
+                    <input type="text" class="form-control" formControlName="titulo">
+                </div>
+                <div class="col-1">
+                    <img *ngIf="formulario.controls.titulo.valid && formulario.controls.titulo.touched"
+                        src="https://mallaventura.pe/santaanita/wp-content/uploads/sites/2/2019/09/check-verde-1.png"
+                        width="40" height="40">
+                </div>
+            </div>
+            <p class="error" *ngIf="formulario.controls.titulo.errors?.required && formulario.controls.titulo.touched">
+                El campo titulo es obligatorio.
+            </p>
+        </div>
+
+        <div class="form-group">
+            <label>Texto</label>
+            <div class="row">
+                <div class="col-11">
+                    <textarea class="form-control" rows="3" formControlName="texto"></textarea>
+                </div>
+                <div class="col-1">
+                    <img *ngIf="formulario.controls.texto.valid && formulario.controls.texto.touched"
+                        src="https://mallaventura.pe/santaanita/wp-content/uploads/sites/2/2019/09/check-verde-1.png"
+                        width="40" height="40">
+                </div>
+            </div>
+            <p class="error" *ngIf="formulario.controls.texto.errors?.required && formulario.controls.texto.touched">
+                El campo texto es obligatorio.
+            </p>
+        </div>
+
+        <div class="form-group">
+            <label>Autor</label>
+            <div class="row">
+                <div class="col-11">
+                    <input type="text" class="form-control" formControlName="autor">
+                </div>
+                <div class="col-1">
+                    <img *ngIf="formulario.controls.autor.valid && formulario.controls.autor.touched"
+                        src="https://mallaventura.pe/santaanita/wp-content/uploads/sites/2/2019/09/check-verde-1.png"
+                        width="40" height="40">
+                </div>
+            </div>
+            <p class="error" *ngIf="formulario.controls.autor.errors?.required && formulario.controls.autor.touched">
+                El campo autor es obligatorio.
+            </p>
+        </div>
+
+        <div class="form-group">
+            <label>Imagen URL</label>
+            <div class="row">
+                <div class="col-11">
+                    <input type="text" class="form-control" formControlName="imagen">
+                </div>
+                <div class="col-1">
+                    <img *ngIf="formulario.controls.imagen.valid && formulario.controls.imagen.touched"
+                        src="https://mallaventura.pe/santaanita/wp-content/uploads/sites/2/2019/09/check-verde-1.png"
+                        width="40" height="40">
+                </div>
+            </div>
+            <p class="error" *ngIf="formulario.controls.imagen.errors?.required && formulario.controls.imagen.touched">
+                El campo imagen es obligatorio.
+            </p>
+        </div>
+
+        <div class="form-group">
+            <label>Fecha</label>
+            <div class="row">
+                <div class="col-11">
+                    <input type="date" class="form-control" formControlName="fecha">
+                </div>
+                <div class="col-1">
+                    <img *ngIf="formulario.controls.fecha.valid && formulario.controls.fecha.touched"
+                        src="https://mallaventura.pe/santaanita/wp-content/uploads/sites/2/2019/09/check-verde-1.png"
+                        width="40" height="40">
+                </div>
+            </div>
+            <p class="error" *ngIf="formulario.controls.fecha.errors?.required && formulario.controls.fecha.touched">
+                El campo fecha es obligatorio.
+            </p>
+        </div>
+
+        <div class="form-group">
+            <label>Categoría</label>
+            <div class="row">
+                <div class="col-11">
+                    <select class="custom-select form-control" formControlName="categoria">
+                        <option value="" selected>Selecciona una categoría</option>
+                        <option value="deporte">Deporte</option>
+                        <option value="cine">Cine</option>
+                        <option value="musica">Música</option>
+                    </select>
+                </div>
+                <div class="col-1">
+                    <img *ngIf="formulario.controls.categoria.valid && formulario.controls.categoria.touched"
+                        src="https://mallaventura.pe/santaanita/wp-content/uploads/sites/2/2019/09/check-verde-1.png"
+                        width="40" height="40">
+                </div>
+            </div>
+            <p class="error"
+                *ngIf="formulario.controls.categoria.errors?.required && formulario.controls.categoria.touched">
+                El campo categoria es obligatorio.
+            </p>
+        </div>
+
+        <input type="submit" value="Enviar" class="col-11 btn btn-block btn-success" [disabled]="!formulario.valid">
+        <p class="correcto" *ngIf="formulario.valid && postCreado === true">
+            ¡Post creado correctamente!
+        </p>
+
+    </form>
+</div>
