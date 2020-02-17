@@ -17,7 +17,6 @@ export class PostsService {
   // FUNCIONES DEL SERVICIO
 
   addPost(pTitulo: string, pTexto: string, pAutor: string, pImagen: string, pFecha: string, pCategoria: string) {
-    this.arrPosts = this.leerLS();
     for (const post of this.arrPosts) {
       this.ultimoId = post.id;
     }
@@ -27,18 +26,20 @@ export class PostsService {
   }
 
   getAllPosts(): Post[] {
-    return this.leerLS();
+    if (JSON.parse(localStorage.getItem('array de posts')) === null) {
+      return this.arrPosts = new Array();
+    } else {
+      return this.arrPosts = JSON.parse(localStorage.getItem('array de posts'));
+    }
   }
 
   getPostsByCategoria(pCategoria: string): Post[] {
-    this.arrPosts = this.leerLS();
     return this.arrPosts.filter(post => {
       return post.categoria === pCategoria;
     });
   }
 
   getPostsByName(pPalabras: string): Post[] {
-    this.arrPosts = this.leerLS();
     return this.arrPosts.filter(post => {
       const postCompleto = this.eliminarDiacriticos(this.eliminarEspacios(post.titulo + post.texto + post.autor + post.categoria));
       const busquedaCompleta = this.eliminarDiacriticos(this.eliminarEspacios(pPalabras));
@@ -47,14 +48,12 @@ export class PostsService {
   }
 
   getById(pId: number): Post {
-    this.arrPosts = this.leerLS();
     return this.arrPosts.find(post => {
       return post.id === pId;
     });
   }
 
   deletePost(pId: number) {
-    this.arrPosts = this.leerLS();
     const position = this.arrPosts.findIndex(post => {
       return post.id === pId;
     });
@@ -66,14 +65,6 @@ export class PostsService {
   }
 
   // FUNCIONES DE APOYO AL SERVICIO
-
-  leerLS(): Post[] {
-    if (JSON.parse(localStorage.getItem('array de posts')) === null) {
-      return this.arrPosts = new Array();
-    } else {
-      return this.arrPosts = JSON.parse(localStorage.getItem('array de posts'));
-    }
-  }
 
   eliminarEspacios(pCadena: string): string {
     const regex = / /g;
