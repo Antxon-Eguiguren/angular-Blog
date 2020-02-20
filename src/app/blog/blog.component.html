@@ -1,32 +1,38 @@
 <div class="wrapper">
     <div class="container-fluid">
-        <div class="fila">
-            <div class="titulo">
+        <div class="row">
+            <div class="col-6 col-md-3 titulo">
                 <h1>M y B</h1>
                 <h1>L O G</h1>
             </div>
 
-            <div>
-                <input type="text" class="search" placeholder="Search Something..."
-                    (input)="manejarFiltroNombre($event)" size="80">
-                <select class="custom-select filtro_categoria" (change)="manejarFiltroCategoria($event)">
-                    <option value="" selected>Filter by Category...</option>
-                    <option value="todas">Todas</option>
-                    <option value="cat1">One</option>
-                    <option value="cat2">Two</option>
-                    <option value="cat3">Three</option>
-                    <option value="cat4">Four</option>
-                </select>
+            <div class="col-6 col-md-6 boton">
+                <button [routerLink]="['/new']" class="learn-more">WRITE A POST</button>
             </div>
 
-            <div>
-                <button [routerLink]="['/new']" class="learn-more btn">WRITE A POST</button>
+            <div class="row no-gutters col-12 col-md-3 filtros">
+                <div class="col-12 filtro_nombre">
+                    <input type="text" class="search" placeholder="Search Something..."
+                        (input)="manejarFiltroNombre($event)">
+                </div>
+
+                <div class="col-12 filtro_categoria">
+                    <select class="custom-select category" (change)="manejarFiltroCategoria($event)">
+                        <option value="" selected>Filter by Category...</option>
+                        <option value="todas">Todas</option>
+                        <option value="cine">Cinema</option>
+                        <option value="musica">Music</option>
+                        <option value="deporte">Sports</option>
+                    </select>
+                </div>
             </div>
+
         </div>
     </div>
 </div>
 
-<div *ngFor="let post of arrPosts" class="card" style="width: 18rem;">
+
+<div *ngFor="let post of arrPosts" class="card">
     <div class="card-body">
         <img [src]=post.imagen class="card-img-top">
         <h5 class="card-title">{{ post.titulo }}</h5>

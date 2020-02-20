@@ -26,10 +26,10 @@ export class PostsService {
     });
   }
 
-  getPostsByName(pPalabras: string): Post[] {
+  getPostsByName(pBusqueda: string): Post[] {
     return this.arrPosts.filter(post => {
       const postCompleto = this.eliminarDiacriticos(this.eliminarEspacios(post.titulo + post.texto + post.autor + post.categoria));
-      const busquedaCompleta = this.eliminarDiacriticos(this.eliminarEspacios(pPalabras));
+      const busquedaCompleta = this.eliminarDiacriticos(this.eliminarEspacios(pBusqueda));
       return postCompleto.toLowerCase().includes(busquedaCompleta.toLowerCase());
     });
   }
@@ -40,12 +40,22 @@ export class PostsService {
     });
   }
 
-  addPost(pTitulo: string, pTexto: string, pAutor: string, pImagen: string, pFecha: string, pCategoria: string) {
+  addPost(pFormValues: any) {
     for (const post of this.arrPosts) {
       this.ultimoId = post.id;
     }
-    const post = new Post(this.ultimoId + 1, pTitulo, pTexto, pAutor, pImagen, pFecha, pCategoria);
-    this.arrPosts.push(post);
+    const post = new Post(
+      {
+        id: this.ultimoId + 1,
+        titulo: pFormValues.titulo,
+        texto: pFormValues.texto,
+        autor: pFormValues.autor,
+        imagen: pFormValues.imagen,
+        fecha: pFormValues.fecha,
+        categoria: pFormValues.categoria
+      }
+    );
+    this.arrPosts.unshift(post);
     localStorage.setItem('array de posts', JSON.stringify(this.arrPosts));
   }
 

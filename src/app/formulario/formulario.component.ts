@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../posts.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Post } from '../models/post';
 
 @Component({
   selector: 'app-formulario',
@@ -43,8 +44,9 @@ export class FormularioComponent implements OnInit {
   }
 
   onSubmit() {
-    this.postsService.addPost(this.formulario.value.titulo, this.formulario.value.texto, this.formulario.value.autor, this.formulario.value.imagen, this.formulario.value.fecha, this.formulario.value.categoria);
+    this.postsService.addPost(this.formulario.value);
     this.postCreado = true;
+
     setTimeout(timeout => {
       this.router.navigate(['blog']);
     }, 5000);

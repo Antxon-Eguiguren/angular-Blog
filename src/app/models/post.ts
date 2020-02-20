@@ -7,13 +7,14 @@ export class Post {
     fecha: string;
     categoria: string;
 
-    constructor(pId: number, pTitulo: string, pTexto: string, pAutor: string, pImagen: string, pFecha: string, pCategoria: string) {
-        this.id = pId;
-        this.titulo = pTitulo;
-        this.texto = pTexto;
-        this.autor = pAutor;
-        this.imagen = pImagen;
-        this.fecha = pFecha;
-        this.categoria = pCategoria;
+    // Al constructor le paso un objeto con las siguientes claves
+    constructor({ id, titulo, texto, autor, imagen, fecha, categoria }) {
+        this.id = id;
+        this.titulo = titulo;
+        this.texto = texto;
+        this.autor = autor;
+        this.imagen = imagen;
+        this.fecha = fecha;
+        this.categoria = categoria;
     }
 }

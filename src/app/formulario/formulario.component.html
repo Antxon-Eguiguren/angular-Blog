@@ -1,4 +1,5 @@
 <div class="container">
+    <h1>New Post</h1>
     <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
         <div class="form-group">
@@ -113,6 +114,5 @@
         <p class="correcto" *ngIf="formulario.valid && postCreado === true">
             ¡Post creado correctamente!
         </p>
-
     </form>
 </div>
