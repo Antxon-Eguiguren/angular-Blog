@@ -3,12 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { BlogComponent } from './blog/blog.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { PostComponent } from './post/post.component';
-
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'blog' },
   { path: 'blog', component: BlogComponent },
   { path: 'blog/:postId', component: PostComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'new', component: FormularioComponent },
   { path: '**', redirectTo: 'blog' }
 ];

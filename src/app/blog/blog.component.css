@@ -1,14 +1,15 @@
 .container-fluid {
     background-color: azure;
+    border-bottom: 3px solid tomato;
+}
+
+.container {
+  margin-top: 50px;
 }
 
 .titulo {
     color: tomato;
     text-align: center;
-}
-
-.filtros {
-  padding-right: 80px;
 }
 
 .filtro_nombre {
@@ -43,6 +44,23 @@
   margin: 30px 0px;
 }
 
+.header {
+  box-shadow: 20px 31px 74px -30px rgba(158,158,158,0.53);
+}
+
+.mensaje {
+  color: #aaa;
+  padding: 50px 0px;
+}
+
+.posts {
+  margin: 0 auto;
+}
+
+.card {
+  margin: 10px 0px;
+}
+
 input:focus, input.form-control:focus {
     outline: none !important;
     outline-width: 0 !important;
@@ -50,6 +68,27 @@ input:focus, input.form-control:focus {
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
 }
+
+/* MEDIA QUERIES */
+@media (max-width: 767px){
+  .titulo, .boton {
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+}
+
+@media (min-width: 768px){
+  .filtros {
+    padding-right: 30px;
+  }
+}
+
+@media (min-width: 1250px){
+  .filtros {
+    padding-right: 80px;
+  }
+}
+
 
 /*----------------------------------------------------- */
 /* CLASE COPIADA DE CODEPEN PARA EL BOTÓN DE CREAR POST */

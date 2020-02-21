@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../posts.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Post } from '../models/post';
 
 @Component({
   selector: 'app-formulario',
@@ -49,6 +48,6 @@ export class FormularioComponent implements OnInit {
 
     setTimeout(timeout => {
       this.router.navigate(['blog']);
-    }, 5000);
+    }, 3000);
   }
 }

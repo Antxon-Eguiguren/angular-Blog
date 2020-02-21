@@ -3,7 +3,7 @@
     <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
         <div class="form-group">
-            <label>Título</label>
+            <label>Title</label>
             <div class="row">
                 <div class="col-11">
                     <input type="text" class="form-control" formControlName="titulo">
@@ -15,12 +15,12 @@
                 </div>
             </div>
             <p class="error" *ngIf="formulario.controls.titulo.errors?.required && formulario.controls.titulo.touched">
-                El campo titulo es obligatorio.
+                Title field is mandatory.
             </p>
         </div>
 
         <div class="form-group">
-            <label>Texto</label>
+            <label>Text</label>
             <div class="row">
                 <div class="col-11">
                     <textarea class="form-control" rows="3" formControlName="texto"></textarea>
@@ -32,12 +32,12 @@
                 </div>
             </div>
             <p class="error" *ngIf="formulario.controls.texto.errors?.required && formulario.controls.texto.touched">
-                El campo texto es obligatorio.
+                Text field is mandatory.
             </p>
         </div>
 
         <div class="form-group">
-            <label>Autor</label>
+            <label>Author</label>
             <div class="row">
                 <div class="col-11">
                     <input type="text" class="form-control" formControlName="autor">
@@ -49,12 +49,12 @@
                 </div>
             </div>
             <p class="error" *ngIf="formulario.controls.autor.errors?.required && formulario.controls.autor.touched">
-                El campo autor es obligatorio.
+                Author field is mandatory.
             </p>
         </div>
 
         <div class="form-group">
-            <label>Imagen URL</label>
+            <label>Image URL</label>
             <div class="row">
                 <div class="col-11">
                     <input type="text" class="form-control" formControlName="imagen">
@@ -66,12 +66,12 @@
                 </div>
             </div>
             <p class="error" *ngIf="formulario.controls.imagen.errors?.required && formulario.controls.imagen.touched">
-                El campo imagen es obligatorio.
+                Image URL field is mandatory.
             </p>
         </div>
 
         <div class="form-group">
-            <label>Fecha</label>
+            <label>Date</label>
             <div class="row">
                 <div class="col-11">
                     <input type="date" class="form-control" formControlName="fecha">
@@ -83,19 +83,19 @@
                 </div>
             </div>
             <p class="error" *ngIf="formulario.controls.fecha.errors?.required && formulario.controls.fecha.touched">
-                El campo fecha es obligatorio.
+                Date field is mandatory.
             </p>
         </div>
 
         <div class="form-group">
-            <label>Categoría</label>
+            <label>Category</label>
             <div class="row">
                 <div class="col-11">
                     <select class="custom-select form-control" formControlName="categoria">
-                        <option value="" selected>Selecciona una categoría</option>
-                        <option value="deporte">Deporte</option>
-                        <option value="cine">Cine</option>
-                        <option value="musica">Música</option>
+                        <option value="" selected>Select a category</option>
+                        <option value="deporte">Sports</option>
+                        <option value="cine">Cinema</option>
+                        <option value="musica">Music</option>
                     </select>
                 </div>
                 <div class="col-1">
@@ -106,13 +106,14 @@
             </div>
             <p class="error"
                 *ngIf="formulario.controls.categoria.errors?.required && formulario.controls.categoria.touched">
-                El campo categoria es obligatorio.
+                Category field is mandatory.
             </p>
         </div>
 
-        <input type="submit" value="Enviar" class="col-11 btn btn-block btn-success" [disabled]="!formulario.valid">
+        <input type="submit" value="Create Post" class="col-11 btn btn-block btn-success"
+            [disabled]="!formulario.valid">
         <p class="correcto" *ngIf="formulario.valid && postCreado === true">
-            ¡Post creado correctamente!
+            ¡Post succesfully created! Redirecting...
         </p>
     </form>
 </div>

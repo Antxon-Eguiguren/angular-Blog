@@ -1,48 +1,54 @@
 <div class="wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-6 col-md-3 titulo">
+    <div class="container-fluid sticky-top">
+        <div class="row header">
+            <div class="col-6 col-md-3 col-lg-3 titulo">
                 <h1>M y B</h1>
                 <h1>L O G</h1>
             </div>
 
-            <div class="col-6 col-md-6 boton">
-                <button [routerLink]="['/new']" class="learn-more">WRITE A POST</button>
+            <div class="col-6 col-md-5 col-lg-6 boton">
+                <button [routerLink]="['/login']" class="learn-more">WRITE POST</button>
             </div>
 
-            <div class="row no-gutters col-12 col-md-3 filtros">
+            <div class="row no-gutters col-12 col-md-4 col-lg-3 filtros">
                 <div class="col-12 filtro_nombre">
-                    <input type="text" class="search" placeholder="Search Something..."
+                    <input type="text" id="busqueda" class="search" placeholder="Search Something..."
                         (input)="manejarFiltroNombre($event)">
                 </div>
 
                 <div class="col-12 filtro_categoria">
                     <select class="custom-select category" (change)="manejarFiltroCategoria($event)">
                         <option value="" selected>Filter by Category...</option>
-                        <option value="todas">Todas</option>
+                        <option value="todas">All</option>
                         <option value="cine">Cinema</option>
                         <option value="musica">Music</option>
                         <option value="deporte">Sports</option>
                     </select>
                 </div>
             </div>
-
         </div>
     </div>
-</div>
 
-
-<div *ngFor="let post of arrPosts" class="card">
-    <div class="card-body">
-        <img [src]=post.imagen class="card-img-top">
-        <h5 class="card-title">{{ post.titulo }}</h5>
-        <p class="card-text">{{ post.texto }}</p>
-        <p class="card-text">{{ post.autor }}</p>
-        <p class="card-text">{{ post.fecha }}</p>
-        <p class="card-text">{{ post.categoria }}</p>
-        <a class="btn btn-primary" [routerLink]="['/blog', post.id]">Leer mas</a>
-        <a class="btn btn-primary" (click)="manejarClickBorrar(post.id)">Borrar</a>
+    <div class="container">
+        <div class="row posts col-12">
+            <div *ngFor="let post of arrPosts" class="card">
+                <div class="card-body">
+                    <img [src]=post.imagen class="card-img-top">
+                    <h5 class="card-title">{{ post.titulo }}</h5>
+                    <p class="card-text">{{ post.texto }}</p>
+                    <p class="card-text">{{ post.autor }}</p>
+                    <p class="card-text">{{ post.fecha }}</p>
+                    <p class="card-text">{{ post.categoria }}</p>
+                    <a class="btn btn-primary" [routerLink]="['/blog', post.id]">Leer mas</a>
+                    <a class="btn btn-primary" (click)="manejarClickBorrar(post.id)">Borrar</a>
+                </div>
+            </div>
+            <div *ngIf="resultadoFiltros === false">
+                <h3 class="mensaje">No results matching your search...</h3>
+            </div>
+        </div>
     </div>
-</div>
 
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+
+</div>

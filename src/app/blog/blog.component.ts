@@ -10,9 +10,11 @@ import { Post } from '../models/post';
 export class BlogComponent implements OnInit {
 
   arrPosts: Post[];
+  resultadoFiltros: boolean;
 
   constructor(private postsService: PostsService) {
     this.arrPosts = [];
+    this.resultadoFiltros = true;
   }
 
   ngOnInit() {
@@ -29,9 +31,21 @@ export class BlogComponent implements OnInit {
     } else {
       this.arrPosts = this.postsService.getPostsByCategoria($event.target.value);
     }
+    this.comprobarResultadosFiltros();
+    document.querySelector('#busqueda').value = '';
   }
 
   manejarFiltroNombre($event) {
     this.arrPosts = this.postsService.getPostsByName($event.target.value);
+    this.comprobarResultadosFiltros();
   }
+
+  comprobarResultadosFiltros() {
+    if (this.arrPosts.length === 0) {
+      this.resultadoFiltros = false;
+    } else {
+      this.resultadoFiltros = true;
+    }
+  }
+
 }
