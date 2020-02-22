@@ -17,7 +17,7 @@ export class PostsService {
   // FUNCIONES DEL SERVICIO
 
   getAllPosts(): Post[] {
-    return this.arrPosts = JSON.parse(localStorage.getItem('array de posts'));
+    return JSON.parse(localStorage.getItem('array de posts'));
   }
 
   getPostsByCategoria(pCategoria: string): Post[] {

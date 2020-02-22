@@ -1,6 +1,5 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { PostsService } from '../posts.service';
-import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Post } from '../models/post';
 
@@ -15,9 +14,10 @@ export class FormularioComponent implements OnInit, DoCheck {
   postCreado: boolean;
   arrPosts: Post[];
 
-  constructor(private postsService: PostsService, private router: Router) {
+  constructor(private postsService: PostsService) {
 
     this.postCreado = false;
+    this.arrPosts = [];
 
     this.formulario = new FormGroup({
       titulo: new FormControl('', [
