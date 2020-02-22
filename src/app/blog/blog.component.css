@@ -3,6 +3,14 @@
     border-bottom: 3px solid tomato;
 }
 
+img {
+  cursor: pointer;
+}
+
+img:hover {
+  outline: 3px solid yellow;
+}
+
 .container {
   margin-top: 50px;
 }
@@ -54,11 +62,15 @@
 }
 
 .posts {
-  margin: 0 auto;
+  margin: 20px;
 }
 
 .card {
-  margin: 10px 0px;
+  border: none;
+}
+
+.card-title {
+  margin-top: 20px;
 }
 
 input:focus, input.form-control:focus {

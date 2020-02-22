@@ -2,6 +2,19 @@
     margin-top: 30px;
 }
 
+h1 {
+    margin-bottom: 40px;
+}
+
+.formulario {
+    border-right: 1px solid tomato;
+    padding-right: 60px;
+}
+
+.edit {
+    margin-left: 40px;
+}
+
 .error {
     color: red;
 }
@@ -44,9 +57,55 @@ select.ng-invalid.ng-touched {
     cursor: not-allowed;
 }
 
-.btn {
+.tit-btn {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.btn-post {
     margin-top: 50px;
 }
+
+.btn-edit {
+    width: 50% !important;
+}
+
+.btn-danger {
+    color: white;
+}
+
+.card {
+    width: 200px;
+    margin: 20px 0px;
+}
+
+.card-body {
+    position: relative
+}
+
+.borrar {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    background-color: red;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    font-size: 1.6em;
+    cursor: pointer;
+}
+
+.posts {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-title {
+    margin-top: 20px;
+  }
 
 input:focus, input.form-control:focus, textarea:focus, textarea.form-control:focus, select:focus, select.form-control:focus {
     outline: none !important;

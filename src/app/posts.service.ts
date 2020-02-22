@@ -10,7 +10,7 @@ export class PostsService {
   ultimoId: number;
 
   constructor() {
-    this.arrPosts = new Array();
+    this.arrPosts = [];
     this.ultimoId = 0;
   }
 
@@ -22,7 +22,7 @@ export class PostsService {
 
   getPostsByCategoria(pCategoria: string): Post[] {
     return this.arrPosts.filter(post => {
-      return post.categoria === pCategoria;
+      return post.categoria.toLowerCase() === pCategoria.toLowerCase();
     });
   }
 
@@ -41,21 +41,7 @@ export class PostsService {
   }
 
   addPost(pFormValues: any) {
-    for (const post of this.arrPosts) {
-      this.ultimoId = post.id;
-    }
-    const post = new Post(
-      {
-        id: this.ultimoId + 1,
-        titulo: pFormValues.titulo,
-        texto: pFormValues.texto,
-        autor: pFormValues.autor,
-        imagen: pFormValues.imagen,
-        fecha: pFormValues.fecha,
-        categoria: pFormValues.categoria
-      }
-    );
-    this.arrPosts.unshift(post);
+    this.arrPosts.push(this.createNewPost(pFormValues));
     localStorage.setItem('array de posts', JSON.stringify(this.arrPosts));
   }
 
@@ -71,6 +57,32 @@ export class PostsService {
   }
 
   // FUNCIONES DE APOYO AL SERVICIO
+
+  getLastId() {
+    if (this.arrPosts === null) {
+      return this.ultimoId = 0;
+    } else {
+      for (const post of this.arrPosts) {
+        this.ultimoId = post.id;
+      }
+      return this.ultimoId;
+    }
+  }
+
+  createNewPost(pFormValues: any): Post {
+    const post = new Post(
+      {
+        id: this.getLastId() + 1,
+        titulo: pFormValues.titulo,
+        texto: pFormValues.texto,
+        autor: pFormValues.autor,
+        imagen: pFormValues.imagen,
+        fecha: pFormValues.fecha,
+        categoria: pFormValues.categoria
+      }
+    );
+    return post;
+  }
 
   eliminarEspacios(pCadena: string): string {
     const regex = / /g;

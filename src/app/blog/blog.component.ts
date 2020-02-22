@@ -21,18 +21,13 @@ export class BlogComponent implements OnInit {
     this.arrPosts = this.postsService.getAllPosts();
   }
 
-  manejarClickBorrar(pPostId) {
-    this.postsService.deletePost(pPostId);
-  }
-
   manejarFiltroCategoria($event) {
-    if ($event.target.value === 'todas' || $event.target.value === '') {
+    if ($event.target.value === 'All' || $event.target.value === '') {
       this.arrPosts = this.postsService.getAllPosts();
     } else {
       this.arrPosts = this.postsService.getPostsByCategoria($event.target.value);
     }
     this.comprobarResultadosFiltros();
-    document.querySelector('#busqueda').value = '';
   }
 
   manejarFiltroNombre($event) {

@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { PostsService } from '../posts.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Post } from '../models/post';
 
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.css']
 })
-export class FormularioComponent implements OnInit {
+export class FormularioComponent implements OnInit, DoCheck {
 
   formulario: FormGroup;
   postCreado: boolean;
+  arrPosts: Post[];
 
   constructor(private postsService: PostsService, private router: Router) {
 
@@ -40,14 +42,29 @@ export class FormularioComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.arrPosts = this.postsService.getAllPosts();
+  }
+
+  ngDoCheck() {
+    if (this.postCreado === true) {
+      setTimeout(timeout => {
+        this.postCreado = false;
+      }, 3000);
+    }
+  }
+
+  manejarClickBorrar(pPostId) {
+    this.postsService.deletePost(pPostId);
+    this.arrPosts = this.postsService.getAllPosts();
   }
 
   onSubmit() {
     this.postsService.addPost(this.formulario.value);
     this.postCreado = true;
+    this.arrPosts = this.postsService.getAllPosts();
 
     setTimeout(timeout => {
-      this.router.navigate(['blog']);
+      this.formulario.reset();
     }, 3000);
   }
 }

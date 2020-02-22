@@ -38,11 +38,13 @@
         </div>
 
         <input type="submit" value="Log in" class="col-11 btn btn-block btn-success" [disabled]="!formulario.valid">
+        <input routerLink="['/blog']" type="submit" value="Back" class="col-11 btn btn-block btn-danger">
         <p class="correcto" *ngIf="formulario.valid && mensajeOk === true">
             ¡Logged in succesfully! Redirecting...
         </p>
-        <p class="error" *ngIf="formulario.valid && mensajeError === true">
+        <p class="error" *ngIf="mensajeError === true">
             ¡Incorrect user or password, please try again!
         </p>
+
     </form>
 </div>

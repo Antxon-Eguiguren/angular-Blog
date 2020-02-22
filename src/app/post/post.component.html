@@ -1,7 +1,11 @@
 <div class="card" style="width: 18rem;">
     <div class="card-body">
+        <img [src]=post.imagen class="card-img-top">
         <h5 class="card-title">{{ post.titulo }}</h5>
         <p class="card-text">{{ post.texto }}</p>
+        <p class="card-text">{{ post.autor }}</p>
+        <p class="card-text">{{ post.fecha | date }}</p>
+        <p class="card-text">{{ post.categoria }}</p>
     </div>
 </div>
 

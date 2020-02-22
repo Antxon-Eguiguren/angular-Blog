@@ -6,41 +6,39 @@
                 <h1>L O G</h1>
             </div>
 
-            <div class="col-6 col-md-5 col-lg-6 boton">
+            <div class="col-6 col-md-6 col-lg-6 boton">
                 <button [routerLink]="['/login']" class="learn-more">WRITE POST</button>
             </div>
 
-            <div class="row no-gutters col-12 col-md-4 col-lg-3 filtros">
+            <div class="row no-gutters col-12 col-md-3 col-lg-3 filtros">
                 <div class="col-12 filtro_nombre">
-                    <input type="text" id="busqueda" class="search" placeholder="Search Something..."
+                    <input type="text" class="search" placeholder="Search Something..."
                         (input)="manejarFiltroNombre($event)">
                 </div>
 
                 <div class="col-12 filtro_categoria">
                     <select class="custom-select category" (change)="manejarFiltroCategoria($event)">
                         <option value="" selected>Filter by Category...</option>
-                        <option value="todas">All</option>
-                        <option value="cine">Cinema</option>
-                        <option value="musica">Music</option>
-                        <option value="deporte">Sports</option>
+                        <option value="All">All</option>
+                        <option value="Cinema">Cinema</option>
+                        <option value="Music">Music</option>
+                        <option value="Sports">Sports</option>
                     </select>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="row posts col-12">
+    <div class="container-fluid-posts">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 posts">
             <div *ngFor="let post of arrPosts" class="card">
                 <div class="card-body">
-                    <img [src]=post.imagen class="card-img-top">
+                    <img [routerLink]="['/blog', post.id]" [src]=post.imagen class="card-img-top">
                     <h5 class="card-title">{{ post.titulo }}</h5>
-                    <p class="card-text">{{ post.texto }}</p>
-                    <p class="card-text">{{ post.autor }}</p>
-                    <p class="card-text">{{ post.fecha }}</p>
-                    <p class="card-text">{{ post.categoria }}</p>
-                    <a class="btn btn-primary" [routerLink]="['/blog', post.id]">Leer mas</a>
-                    <a class="btn btn-primary" (click)="manejarClickBorrar(post.id)">Borrar</a>
+                    <p class="card-text">Author: {{ post.autor }}</p>
+                    <p class="card-text">Date: {{ post.fecha | date }}</p>
+                    <p class="card-text">Category: {{ post.categoria }}</p>
+                    <a class="btn btn-primary" [routerLink]="['/blog', post.id]">Read More...</a>
                 </div>
             </div>
             <div *ngIf="resultadoFiltros === false">

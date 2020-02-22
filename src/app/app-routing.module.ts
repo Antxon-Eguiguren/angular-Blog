@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'blog/:postId', component: PostComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'new', component: FormularioComponent },
+  { path: 'admin', component: FormularioComponent },
   { path: '**', redirectTo: 'blog' }
 ];
 

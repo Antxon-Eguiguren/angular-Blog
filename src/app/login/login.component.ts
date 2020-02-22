@@ -33,10 +33,11 @@ export class LoginComponent implements OnInit {
       this.mensajeOk = true;
       this.mensajeError = false;
       setTimeout(timeout => {
-        this.router.navigate(['new']);
+        this.router.navigate(['admin']);
       }, 3000);
     } else {
       this.mensajeError = true;
+      this.formulario.reset();
     }
   }
 
