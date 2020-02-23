@@ -114,3 +114,18 @@ input:focus, input.form-control:focus, textarea:focus, textarea.form-control:foc
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
 }
+
+@media(max-width: 767px){
+    .edit {
+        margin-top: 60px;
+    }
+
+    .formulario {
+        border-bottom: 1px solid tomato;
+        border-right: none;
+    }
+
+    .btn-post {
+        margin-bottom: 50px;
+    }
+}

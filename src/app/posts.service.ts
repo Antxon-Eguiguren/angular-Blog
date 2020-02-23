@@ -35,6 +35,8 @@ export class PostsService {
   }
 
   getById(pId: number): Post {
+    // Por qué necesito llamar aquí a getAllPosts() y no lo puedo hacer en el ngOnInit del componente como en los demás casos
+    this.arrPosts = this.getAllPosts();
     return this.arrPosts.find(post => {
       return post.id === pId;
     });

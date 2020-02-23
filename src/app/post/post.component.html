@@ -1,12 +1,20 @@
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <img [src]=post.imagen class="card-img-top">
-        <h5 class="card-title">{{ post.titulo }}</h5>
-        <p class="card-text">{{ post.texto }}</p>
-        <p class="card-text">{{ post.autor }}</p>
-        <p class="card-text">{{ post.fecha | date }}</p>
-        <p class="card-text">{{ post.categoria }}</p>
+<div class="container">
+    <div class="row">
+        <h1>Post Id {{post.id}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <img [src]=post.imagen class="card-img-top">
+                    <h5 class="card-title">{{ post.titulo }}</h5>
+                    <p class="card-text">{{ post.texto }}</p>
+                    <p class="card-text">{{ post.autor }}</p>
+                    <p class="card-text">{{ post.fecha | date }}</p>
+                    <p class="card-text">{{ post.categoria }}</p>
+                    <a class="btn btn-primary" [routerLink]="['/blog']">Back</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-<button [routerLink]="['/blog']">Volver</button>

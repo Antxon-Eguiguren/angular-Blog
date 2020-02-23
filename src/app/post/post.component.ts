@@ -20,5 +20,4 @@ export class PostComponent implements OnInit {
       this.post = this.postsService.getById(parseInt(params.postId, 10));
     });
   }
-
 }
