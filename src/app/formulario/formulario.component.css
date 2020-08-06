@@ -8,7 +8,6 @@ h1 {
 
 .formulario {
     border-right: 1px solid tomato;
-    padding-right: 60px;
 }
 
 .edit {
@@ -105,7 +104,16 @@ select.ng-invalid.ng-touched {
 
 .card-title {
     margin-top: 20px;
-  }
+}
+
+.card-body:hover {
+    cursor: pointer;
+    outline: 3px solid yellow;
+}
+
+.btn-post {
+    margin-bottom: 50px;
+}
 
 input:focus, input.form-control:focus, textarea:focus, textarea.form-control:focus, select:focus, select.form-control:focus {
     outline: none !important;

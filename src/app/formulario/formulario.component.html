@@ -131,13 +131,13 @@
         </div>
         <div class="col-12 col-md-4 col-xl-5 edit">
             <div class="row tit-btn">
-                <h2>Delete Posts</h2>
+                <h2>Edit Posts</h2>
                 <input routerLink="['/blog']" type="button" value="Back" class="btn btn-block btn-danger btn-edit">
             </div>
 
             <div class="row posts">
                 <div *ngFor="let post of arrPosts" class="card">
-                    <div class="card-body">
+                    <div [routerLink]="['/edit', post.id]" class="card-body">
                         <img [src]=post.imagen class="card-img-top">
                         <h5 class="card-title">{{ post.titulo }}</h5>
                         <a class="borrar" (click)="manejarClickBorrar(post.id)">X</a>

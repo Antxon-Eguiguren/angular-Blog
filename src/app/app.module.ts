@@ -8,6 +8,7 @@ import { BlogComponent } from './blog/blog.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { PostComponent } from './post/post.component';
 import { LoginComponent } from './login/login.component';
+import { EditarPostComponent } from './editar-post/editar-post.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { LoginComponent } from './login/login.component';
     BlogComponent,
     FormularioComponent,
     PostComponent,
-    LoginComponent
+    LoginComponent,
+    EditarPostComponent
   ],
   imports: [
     BrowserModule,
