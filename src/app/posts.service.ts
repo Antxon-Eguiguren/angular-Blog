@@ -56,9 +56,25 @@ export class PostsService {
     localStorage.setItem('array de posts', JSON.stringify(this.arrPosts));
   }
 
+  editPost(pFormValues: any, pId: number) {
+    const position = this.arrPosts.findIndex(post => {
+      return post.id === pId;
+    });
+
+    this.arrPosts[position].titulo = pFormValues.titulo;
+    this.arrPosts[position].texto = pFormValues.texto;
+    this.arrPosts[position].autor = pFormValues.autor;
+    this.arrPosts[position].imagen = pFormValues.imagen;
+    this.arrPosts[position].fecha = pFormValues.fecha;
+    this.arrPosts[position].categoria = pFormValues.categoria;
+
+    localStorage.removeItem('array de posts');
+    localStorage.setItem('array de posts', JSON.stringify(this.arrPosts));
+  }
+
   // FUNCIONES DE APOYO AL SERVICIO
 
-  getLastId() {
+  getLastId(): number {
     if (this.arrPosts === null) {
       return this.ultimoId = 0;
     } else {

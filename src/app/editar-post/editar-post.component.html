@@ -1,1 +1,77 @@
-<p>editar-post works!</p>
+<div class="container">
+
+    <div class="row">
+        <h1>Edit Post {{post.id}}</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-12 col-xl-12">
+            <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+                <div class="form-group">
+                    <label>Title</label>
+                    <div class="row">
+                        <div class="col-11">
+                            <input type="text" class="form-control" formControlName="titulo" value={{post.titulo}}>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Text</label>
+                    <div class="row">
+                        <div class="col-11">
+                            <textarea class="form-control" formControlName="texto" rows="15"
+                                value={{post.texto}}></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Author</label>
+                    <div class="row">
+                        <div class="col-11">
+                            <input type="text" class="form-control" formControlName="autor" value={{post.autor}}>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <div class="row">
+                        <div class="col-11">
+                            <input type="text" class="form-control" formControlName="imagen" value={{post.imagen}}>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Date</label>
+                    <div class="row">
+                        <div class="col-11">
+                            <input type="date" class="form-control" formControlName="fecha" value={{post.fecha}}>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <div class="row">
+                        <div class="col-11">
+                            <select class="custom-select form-control" formControlName="categoria"
+                                value={{post.categoria}}>
+                                <option value="" selected>Select a category</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Cinema">Cinema</option>
+                                <option value="Music">Music</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="submit" value="Edit Post" class="col-11 btn-post btn btn-block btn-success">
+                <input routerLink="['/blog']" type="button" value="Back" class="col-11 btn btn-block btn-danger">
+            </form>
+        </div>
+    </div>
+</div>

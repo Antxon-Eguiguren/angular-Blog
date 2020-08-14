@@ -22,7 +22,7 @@ import { EditarPostComponent } from './editar-post/editar-post.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

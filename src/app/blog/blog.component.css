@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Rubik:700&display=swap");
+
 .container-fluid {
     background-color: azure;
     border-bottom: 3px solid tomato;
@@ -105,8 +107,6 @@ input:focus, input.form-control:focus {
 /*----------------------------------------------------- */
 /* CLASE COPIADA DE CODEPEN PARA EL BOTÓN DE CREAR POST */
 /*----------------------------------------------------- */
-
-@import url("https://fonts.googleapis.com/css?family=Rubik:700&display=swap");
 
 * {
   box-sizing: border-box;
